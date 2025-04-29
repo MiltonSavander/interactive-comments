@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --font-size-base: 16px;
+  --font-family-sans: 'Rubik', sans-serif;
+  /* Primary Colors */
+  --color-primary-purple-600: hsl(238, 40%, 52%);
+  --color-primary-pink-400: hsl(358, 79%, 66%);
+  --color-primary-purple-200: hsl(239, 57%, 85%);
+  --color-primary-pink-200: hsl(357, 100%, 86%);
+
+  /* Neutral Colors */
+  --color-neutral-grey-800: hsl(212, 24%, 26%);
+  --color-neutral-grey-500: hsl(211, 10%, 45%);
+  --color-neutral-grey-100: hsl(223, 19%, 93%);
+  --color-neutral-grey-50: hsl(228, 33%, 97%);
+  --color-neutral-white: hsl(0, 100%, 100%);
+}
+
+@layer base {
+  body {
+    @apply font-sans text-base;
+  }
+}

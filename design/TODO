@@ -1,0 +1,14 @@
+- [ ] init project
+- [ ] plan css classes
+- [ ] plan html structure
+- [ ] structure html
+- [ ] create components
+  - [ ] syle hover
+- [ ] create base styles font/body
+- [ ] style components
+- [ ] render dynamicly from data
+- [ ] add create fuction
+- [ ] add delete fuction
+- [ ] add vote fuction
+- [ ] store in localStorage
+- [ ] add timestamps
