@@ -1,12 +1,14 @@
-- [ ] init project
-- [ ] plan css classes
-- [ ] plan html structure
-- [ ] structure html
-- [ ] create components
-  - [ ] syle hover
-- [ ] create base styles font/body
-- [ ] style components
-- [ ] render dynamicly from data
+- [x] init project
+- [x] plan css classes
+- [x] plan html structure
+- [x] structure html
+- [x] create components
+- [ ] create delete alart
+  - [x] syle hover
+- [x] create base styles font/body
+- [x] style components
+- [x] render dynamicly from data
+- [ ] add login fuction
 - [ ] add create fuction
 - [ ] add delete fuction
 - [ ] add vote fuction

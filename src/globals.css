@@ -21,6 +21,12 @@
 
 @layer base {
   body {
-    @apply font-sans text-base;
+    @apply font-sans text-base min-h-screen bg-[#f5f6fa];
   }
+
+
+}
+
+html {
+  scrollbar-gutter: stable;
 }
