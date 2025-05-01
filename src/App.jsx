@@ -3,11 +3,37 @@ import Post from "./componentes/Post";
 import data from "../data.json";
 import { useState, useEffect } from "react";
 import MakePost from "./componentes/MakePost";
+import DeleteAlert from "./componentes/DeleteAlert";
 
 function App() {
   const [myData, setMyData] = useState(data);
   const [sortedComments, setSortedComments] = useState([]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteWithID, setDeleteWithID] = useState();
+  const [textToUpdate, setTextToUpdate] = useState();
 
+  const deletePost = (postId) => {
+    console.log("deletePost function postId", postId);
+    setMyData((prevData) => {
+      const updatedComments = prevData.comments
+        .map((comment) => {
+          // Check if the comment itself matches the postId
+          if (comment.id === postId) {
+            console.log("Deleting a top-level comment");
+            return null; // Mark this comment for deletion
+          }
+
+          // Filter out the reply with the matching postId
+          const updatedReplies = comment.replies.filter((reply) => reply.id !== postId);
+
+          // Return the updated comment with filtered replies
+          return { ...comment, replies: updatedReplies };
+        })
+        .filter((comment) => comment !== null); // Remove any null comments
+
+      return { ...prevData, comments: updatedComments };
+    });
+  };
   const updateScore = (postId, increment) => {
     setMyData((prevData) => {
       const updatedComments = prevData.comments.map((comment) => {
@@ -51,6 +77,28 @@ function App() {
     setSortedComments(sortedComments);
   }, [myData]);
 
+  const editComment = (postId, editedContent) => {
+    setMyData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        comments: prevData.comments.map((comment) =>
+          comment.id === postId
+            ? { ...comment, content: editedContent, createdAt: "(edited) Now" }
+            : {
+                ...comment,
+                replies: comment.replies.map((reply) =>
+                  reply.id === postId
+                    ? { ...reply, content: editedContent, createdAt: "(edited) Now" }
+                    : reply
+                ),
+              }
+        ),
+      };
+      console.log("Updated myData:", updatedData); // Log the updated state here
+      return updatedData;
+    });
+  };
+
   const updateComments = (newComments, isReplyingTo, replyingToID, parentPostId) => {
     const latestID = Math.max(
       ...myData.comments.map((comment) => comment.id),
@@ -59,7 +107,7 @@ function App() {
     const newPost = {
       id: latestID + 1,
       content: newComments,
-      createdAt: "now",
+      createdAt: "Now",
       score: 0,
       user: myData.currentUser,
       ...(isReplyingTo && { replyingTo: isReplyingTo }),
@@ -111,7 +159,7 @@ function App() {
 
   return (
     <>
-      <main className="flex flex-col gap-4 items-center pt-40 max-w-[720px] mx-auto">
+      <main className="flex flex-col gap-4 items-center p-4 pt-8 md:pt-15 max-w-[730px] mx-auto">
         {sortedComments.map((comment) => (
           <Post
             key={comment.id}
@@ -124,9 +172,20 @@ function App() {
             replies={comment.replies}
             updateScore={updateScore}
             updateComments={updateComments}
+            setIsDeleting={setIsDeleting}
+            setDeleteWithID={setDeleteWithID}
+            setTextToUpdate={setTextToUpdate}
+            editComment={editComment}
           ></Post>
         ))}
         <MakePost updateComments={updateComments} />
+        {isDeleting && (
+          <DeleteAlert
+            setIsDeleting={setIsDeleting}
+            deleteWithID={deleteWithID}
+            deletePost={deletePost}
+          />
+        )}
       </main>
     </>
   );

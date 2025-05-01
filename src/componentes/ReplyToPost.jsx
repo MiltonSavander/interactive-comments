@@ -23,7 +23,7 @@ const ReplyToPost = ({ setIsReplying, updateComments, username, postId, parentPo
       </div>
       <div className="flex-1 h-24 ">
         <textarea
-          className="w-full cursor-pointer bg-neutral-white border rounded-lg p-4 resize-none text-neutral-grey-500"
+          className="w-full cursor-pointer bg-neutral-white border border-neutral-grey-100 hover:border-primary-purple-600 focus:border-primary-purple-600 focus:outline-none rounded-lg p-4 resize-none text-neutral-grey-500"
           style={{ height: "100%" }}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
