@@ -36,10 +36,8 @@ const MakePost = ({ updateComments }) => {
       </div>
       <div className="flex-1 col-span-2 order-1  ">
         <textarea
-          className="w-full cursor-pointer bg-neutral-white border border-neutral-grey-100 hover:border-primary-purple-600 focus:border-primary-purple-600 focus:outline-none rounded-lg p-4 resize-none text-neutral-grey-500"
-          style={{ height: "100%" }}
+          className="w-full cursor-pointer overflow-hidden bg-neutral-white border border-neutral-grey-100 hover:border-primary-purple-600 focus:border-primary-purple-600 focus:outline-none rounded-lg p-4 resize-none text-neutral-grey-500"
           ref={textareaRef}
-          style={{ overflow: "hidden" }}
           placeholder="Add a comment..."
           value={comment}
           onChange={(e) => {

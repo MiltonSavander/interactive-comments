@@ -132,6 +132,14 @@ const Post = ({
           )}
         </div>
       </div>
+      {isReplying && (
+        <ReplyToPost
+          setIsReplying={setIsReplying}
+          updateComments={updateComments}
+          username={username}
+          postId={postId}
+        />
+      )}
       {replies.length > 0 && (
         <div className="flex flex-row mt-2 ">
           <div className="flex md:justify-center pb-2 w-4 md:w-26">
@@ -158,14 +166,6 @@ const Post = ({
             ))}
           </div>
         </div>
-      )}
-      {isReplying && (
-        <ReplyToPost
-          setIsReplying={setIsReplying}
-          updateComments={updateComments}
-          username={username}
-          postId={postId}
-        />
       )}
     </div>
   );

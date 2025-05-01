@@ -8,7 +8,7 @@ const Likes = ({ score, postId, updateScore }) => {
     updateScore(postId, -1);
   };
   return (
-    <div className="flex flex-row md:flex-col items-center bg-neutral-grey-50 rounded-xl h-9 w-22 md:h-25 md:w-10">
+    <div className="flex flex-row md:flex-col items-center bg-neutral-grey-50 rounded-[10px] h-9 w-22 md:h-25 md:w-11">
       <button
         onClick={() => {
           handleIncrement();
@@ -31,7 +31,7 @@ const Likes = ({ score, postId, updateScore }) => {
         </div>
       </button>
 
-      <div className="size-8 flex justify-center items-center  text-primary-purple-600 font-bold">
+      <div className="size-8 flex font-bold justify-center items-center  text-primary-purple-600">
         {score}
       </div>
       <button
