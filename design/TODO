@@ -3,14 +3,13 @@
 - [x] plan html structure
 - [x] structure html
 - [x] create components
-- [ ] create delete alart
+- [x] create delete alart
   - [x] syle hover
 - [x] create base styles font/body
 - [x] style components
 - [x] render dynamicly from data
-- [ ] add login fuction
-- [ ] add create fuction
-- [ ] add delete fuction
-- [ ] add vote fuction
+- [x] add create fuction
+- [x] add delete fuction
+- [x] add vote fuction
 - [ ] store in localStorage
-- [ ] add timestamps
+- [x] add timestamps
